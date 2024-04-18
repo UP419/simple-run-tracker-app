@@ -1,9 +1,9 @@
 package com.example.springapp.run;
 
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,13 +30,13 @@ public class RunController {
         if (run.isPresent()) {
             return run.get();
         } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Object not found");
+            throw new RunNotFoundException("Run not Found!");
         }
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/addRun")
-    void create(@RequestBody Run run) {
+    void create(@Valid @RequestBody Run run) {
         runRepository.create(run);
     }
 
@@ -48,7 +48,7 @@ public class RunController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/update/{id}")
-    void update(@RequestBody Run run, @PathVariable int id) {
+    void update(@Valid @RequestBody Run run, @PathVariable int id) {
         runRepository.update(run, id);
     }
 }
