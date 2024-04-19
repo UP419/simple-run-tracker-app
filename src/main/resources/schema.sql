@@ -1,23 +1,20 @@
 CREATE TABLE IF NOT EXISTS Run
 (
     id
-    INT
-    NOT
-    NULL,
+    SERIAL
+    PRIMARY
+    KEY,
     title
-    nvarchar
+    varchar
 (
     255
 ) NOT NULL,
-    startDate timestamp NOT NULL,
-    endDate timestamp NOT NULL,
+    start_date timestamp NOT NULL,
+    end_date timestamp NOT NULL,
     distance float NOT NULL,
-    location nvarchar
+    location varchar
 (
     32
 ) NOT NULL,
-    PRIMARY KEY
-(
-    id
-)
+    version int
     );
