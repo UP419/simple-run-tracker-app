@@ -2,8 +2,6 @@ package com.example.springapp;
 
 import com.example.springapp.run.Location;
 import com.example.springapp.run.Run;
-import com.example.springapp.run.RunController;
-import com.example.springapp.run.RunRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -22,15 +20,12 @@ public class Application {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        Object tmp = context.getBean("tmp");
-        System.out.println(tmp);
         log.info("Application started successfully");
-        System.out.println(LocalDateTime.now());
     }
 
 
     @Bean
-    CommandLineRunner runner(){
+    CommandLineRunner runner() {
         return args -> {
             Run run = new Run(1, "first run",
                     LocalDateTime.now(),

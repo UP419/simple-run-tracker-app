@@ -16,7 +16,7 @@ public record Run(int id,
 
 
     public Run {
-        if (endDate.isAfter(startDate)) {
+        if (startDate.isAfter(endDate)) {
             throw new IllegalArgumentException("Wrong dates!");
         }
     }
