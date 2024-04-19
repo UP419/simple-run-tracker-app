@@ -12,9 +12,9 @@ import java.util.Optional;
 @RequestMapping("api")
 public class RunController {
 
-    private final RunRepository runRepository;
+    private final H2RunRepository runRepository;
 
-    public RunController(RunRepository runRepository) {
+    public RunController(H2RunRepository runRepository) {
         this.runRepository = runRepository;
     }
 

@@ -1,5 +1,6 @@
 package com.example.springapp;
 
+import com.example.springapp.run.H2RunRepository;
 import com.example.springapp.run.Location;
 import com.example.springapp.run.Run;
 import org.slf4j.Logger;
@@ -25,13 +26,14 @@ public class Application {
 
 
     @Bean
-    CommandLineRunner runner() {
+    CommandLineRunner runner(H2RunRepository runRepository) {
         return args -> {
             Run run = new Run(1, "first run",
                     LocalDateTime.now(),
                     LocalDateTime.now().plus(1, ChronoUnit.HOURS),
                     4.5,
                     Location.OUTDOOR);
+            runRepository.create(run);
             log.info("Run - " + run);
         };
     }
